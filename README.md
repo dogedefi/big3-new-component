@@ -31,10 +31,10 @@ Install via NPM:
 
 ```bash
 # Using Yarn:
-$ yarn global add new-component
+$ yarn global add big3-new-component
 
 # or, using NPM
-$ npm i -g new-component
+$ npm i -g big3-new-component
 ```
 
 `cd` into your project's directory, and try creating a new component:
