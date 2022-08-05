@@ -60,6 +60,8 @@ const templatePath = `./templates/${program.type}.js`;
 const componentDir = `${program.dir}/${componentName}`;
 const filePath = `${componentDir}/${componentName}.${program.extension}`;
 const indexPath = `${componentDir}/index.${program.extension}`;
+const desktopPath = `${program.dir}/${componentName}/index.less`;
+const mobilePath = `${program.dir}/${componentName}/mobile.less`;
 
 // Our index template is super straightforward, so we'll just inline it for now.
 const indexTemplate = prettify(`\
@@ -114,10 +116,12 @@ mkDirPromise(componentDir)
     logItemCompletion('Component built and saved to disk.');
     return template;
   })
-  .then((template) =>
+  .then((template) => {
     // We also need the `index.js` file, which allows easy importing.
     writeFilePromise(indexPath, prettify(indexTemplate))
-  )
+    writeFilePromise(desktopPath, '')
+    writeFilePromise(mobilePath, '')
+  })
   .then((template) => {
     logItemCompletion('Index file built and saved to disk.');
     return template;
